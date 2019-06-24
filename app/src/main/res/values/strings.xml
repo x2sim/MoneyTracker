@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">LoftMoney</string>
+    <string name="txt_goods">Name</string>
+    <string name="name_price">Price</string>
+    <string name="txt_add">Add</string>
 </resources>

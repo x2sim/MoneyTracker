@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    android:layout_height="match_parent">
     <EditText
-        style="@style/editStylep"
+        style="@style/editStylel"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="200dp"
         android:id="@+id/goods"
         android:layout_marginTop="127dp"
         android:hint="@string/txt_goods"
         />
     <EditText
-        style="@style/editStylep"
+        style="@style/editStylel"
         android:id="@+id/name_price"
         android:inputType="number"
         android:layout_marginTop="25dp"
@@ -22,11 +20,12 @@
         />
     <Button
         android:id="@+id/button_add"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:text="@string/txt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/add_button_color_inactive"/>
+
 
 </LinearLayout>
