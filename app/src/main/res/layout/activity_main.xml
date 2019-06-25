@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@id/button_add"
+        android:paddingStart="33dp"
+        android:paddingEnd="104dp"
+        android:paddingBottom="68dp">
 
     <EditText
         style="@style/editStylep"
         android:id="@+id/goods"
-        android:layout_marginTop="127dp"
-        android:hint="@string/txt_goods"
-        />
+
+        android:hint="@string/txt_goods" />
+
     <EditText
         style="@style/editStylep"
         android:id="@+id/name_price"
-        android:inputType="number"
         android:layout_marginTop="25dp"
         android:hint="@string/name_price"
-        />
+        android:inputType="number" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/button_add"
-        android:layout_marginTop="61dp"
-        android:layout_gravity="center"
-        android:text="@string/txt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/add_button_color_inactive"/>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
 
-</LinearLayout>
+        android:background="@null"
+        android:text="@string/txt_add"
+        android:textColor="@color/add_button_color_inactive" />
+
+</RelativeLayout>

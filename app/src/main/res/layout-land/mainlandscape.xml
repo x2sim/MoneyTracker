@@ -5,8 +5,6 @@
     android:layout_height="match_parent">
     <EditText
         style="@style/editStylel"
-        android:layout_marginStart="200dp"
-        android:layout_marginEnd="200dp"
         android:id="@+id/goods"
         android:layout_marginTop="127dp"
         android:hint="@string/txt_goods"
