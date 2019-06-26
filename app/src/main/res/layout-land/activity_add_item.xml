@@ -4,21 +4,21 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
     <EditText
-        style="@style/editStylel"
+        style="@style/editStyleLandscape"
         android:id="@+id/goods"
-        android:layout_marginTop="127dp"
+        android:layout_marginTop="@dimen/marginTopEditName"
         android:hint="@string/txt_goods"
         />
     <EditText
-        style="@style/editStylel"
+        style="@style/editStyleLandscape"
         android:id="@+id/name_price"
         android:inputType="number"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/marginTopEdit"
         android:hint="@string/name_price"
         />
     <Button
         android:id="@+id/button_add"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/marginTopButton"
         android:layout_gravity="center"
         android:text="@string/txt_add"
         android:layout_width="wrap_content"
