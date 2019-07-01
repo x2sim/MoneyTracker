@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginTopEditPrice">25dp</dimen>
+    <dimen name="paddingBottomLinear">68dp</dimen>
+    <dimen name="paddingEndLinear">104dp</dimen>
+    <dimen name="paddingStartLinear">33dp</dimen>
+    <dimen name="marginTopButton">30dp</dimen>
+    <dimen name="marginTopEdit">25dp</dimen>
+    <dimen name="marginTopEditName">127dp</dimen>
+    <dimen name="textSizeEdit">24sp</dimen>
+</resources>
