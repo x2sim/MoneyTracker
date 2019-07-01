@@ -3,4 +3,10 @@
     <string name="txt_goods">Name</string>
     <string name="name_price">Price</string>
     <string name="txt_add">Add</string>
+    <string name="Start">START</string>
+    <string name="template_price" translatable="false">%1$s ₽</string>
+    <string name="budget_title">Учет бюджета</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
