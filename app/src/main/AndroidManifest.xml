@@ -16,10 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdItemActivity"
+        <activity android:name=".AddItemActivity"
             android:theme="@style/NoActionBarTheme">
-
         </activity>
+        <activity android:name=".BudgetActivity" android:label="@string/budget_title"/>
     </application>
 
 </manifest>
