@@ -6,4 +6,7 @@
     <string name="Start">START</string>
     <string name="template_price" translatable="false">%1$s ₽</string>
     <string name="budget_title">Учет бюджета</string>
+    <string name="hello_blank_fragment">fragment_text</string>
+    <string name="outcome">Расходы</string>
+    <string name="income">Доходы</string>
 </resources>

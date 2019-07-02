@@ -1,50 +1,56 @@
 package com.loftschool.alexandrdubkov.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
+
 
 public class BudgetActivity extends AppCompatActivity {
-    public static final int REQUEST_CODE = 1001;
-    private ItemsAdapter mItemsAdapter;
+
+private TabLayout mTabLayout;
+private ViewPager mViewPager;
+private BudgetViewPagerAdapter mViewPagerAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+        mViewPagerAdapter = new BudgetViewPagerAdapter(getSupportFragmentManager());
+       mTabLayout = findViewById(R.id.tab_layout);
+       mViewPager = findViewById(R.id.view_pager);
+       mViewPager.setAdapter(mViewPagerAdapter);
+       mTabLayout.setupWithViewPager(mViewPager);
+       mTabLayout.getTabAt(0).setText(R.string.outcome);
+        mTabLayout.getTabAt(1).setText(R.string.income);
+        mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.marigold));
+    }
+static class BudgetViewPagerAdapter extends FragmentPagerAdapter {
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        mItemsAdapter = new ItemsAdapter();
 
-       recyclerView.setAdapter(mItemsAdapter);
-       recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        DividerItemDecoration decor = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(decor);
-        mItemsAdapter.addItem(new Item( "Молоко", 70));
-        mItemsAdapter.addItem(new Item("Зубная щетка", 70));
-        mItemsAdapter.addItem(new Item("Сковородка с антипригарным покрытием", 1670));
+    public BudgetViewPagerAdapter(FragmentManager fm) {
+        super(fm);
 
-        Button openAddScreenButton = findViewById(R.id.open_add_screen);
-        openAddScreenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(BudgetActivity.this, AddItemActivity.class), REQUEST_CODE);
-            }
-        });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK )
-        {
-            Item item = new Item(data.getStringExtra("name"), Integer.parseInt(data.getStringExtra("price")));
-            mItemsAdapter.addItem(item);
+    public Fragment getItem(int i) {
+        switch (i){
+            case 0:
+                return BudgetFragment.newInstance(R.color.dark_sky_blue);
+            case 1:
+                return BudgetFragment.newInstance(R.color.income_price_color);
         }
+        return null;
     }
+
+    @Override
+    public int getCount() {
+        return 2;
+    }
+}
 }
