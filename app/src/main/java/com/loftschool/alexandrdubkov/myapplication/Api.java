@@ -1,0 +1,17 @@
+package com.loftschool.alexandrdubkov.myapplication;
+
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
+public interface Api {
+    @GET("auth")
+    Call<AuthResponse> auth(@Query("social_user_id") String userId);
+    @GET("items")
+    Call<ItemsResponse> getItems(@Query("type") String type, @Query("auth_token") String token);
+
+    @POST("items/add")
+    Call<Status> addItems(@Body AddItemRequest request, @Query("auth_token") String token);
+}
