@@ -1,5 +1,7 @@
 package com.loftschool.alexandrdubkov.myapplication;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -10,8 +12,9 @@ public interface Api {
     @GET("auth")
     Call<AuthResponse> auth(@Query("social_user_id") String userId);
     @GET("items")
-    Call<ItemsResponse> getItems(@Query("type") String type, @Query("auth_token") String token);
+    Call<List<Item>> getItems(@Query("type") String type, @Query("auth-token") String token);
 
     @POST("items/add")
-    Call<Status> addItems(@Body AddItemRequest request, @Query("auth_token") String token);
+    Call<Status> addItems(@Body AddItemRequest request, @Query("auth-token") String token);
+
 }

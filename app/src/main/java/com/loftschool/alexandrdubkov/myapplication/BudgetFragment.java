@@ -1,21 +1,23 @@
 package com.loftschool.alexandrdubkov.myapplication;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.service.voice.AlwaysOnHotwordDetector;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class BudgetFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -45,6 +47,13 @@ public class BudgetFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApi = ((LoftApp) getActivity().getApplication()).getApi();
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        loadItems();
     }
 
     @Override
@@ -74,13 +83,39 @@ public class BudgetFragment extends Fragment {
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK )
         {
             final String token = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("auth_token", "");
-            final int price = Integer.parseInt(data.getStringExtra("price");
+            final int price = Integer.parseInt(data.getStringExtra("price"));
             final String name = data.getStringExtra("name");
-            Call <Status> call = mApi.addItems(new AddItemRequest(price, name, getArguments().getString(TYPE)), token);
-            ((retrofit2.Call) call).enqueue();
+            Call<Status> call = mApi.addItems(new AddItemRequest(price, name, getArguments().getString(TYPE)), token);
+            call.enqueue(new Callback<Status>() {
+                @Override
+                public void onResponse(final Call<Status> call, final Response<Status> response) {
+                    loadItems();
+                }
 
+                @Override
+                public void onFailure(final Call<Status> call, final Throwable t) {
 
-            mItemsAdapter.addItem(item);
+                }
+            });
         }
+    }
+    private void loadItems(){
+        final String token = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("auth_token", "");
+        Call<List<Item>>itemsResponseCall = mApi.getItems(getArguments().getString(TYPE), token);
+        itemsResponseCall.enqueue(new Callback<List<Item>>() {
+            @Override
+            public void onResponse(final Call<List<Item>> call, final Response<List<Item>> response) {
+             mItemsAdapter.clear();
+             List<Item> itemsList =  response.body();
+             for (Item item:itemsList) {
+                 mItemsAdapter.addItem(item);
+             }
+            }
+
+            @Override
+            public void onFailure(final Call<List<Item>> call, final Throwable t) {
+
+            }
+        });
     }
 }
