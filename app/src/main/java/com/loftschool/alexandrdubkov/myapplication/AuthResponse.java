@@ -2,6 +2,7 @@ package com.loftschool.alexandrdubkov.myapplication;
 
 import com.google.gson.annotations.SerializedName;
 
+
 class AuthResponse {
     private String status;
     private String id;

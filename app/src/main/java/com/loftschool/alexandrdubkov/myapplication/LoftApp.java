@@ -10,6 +10,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+
 public class LoftApp extends Application {
     private Api mApi;
     @Override
