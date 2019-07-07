@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/medium_grey"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_goods">
+                >
             </android.support.design.widget.TextInputEditText>
         </android.support.design.widget.TextInputLayout>
 
@@ -37,9 +37,7 @@
                 android:id="@+id/name_price"
                 style="@style/editStylePortrait"
                 android:textColor="@color/medium_grey"
-                android:text="@string/name_price"
                 android:layout_marginTop="@dimen/marginTopEditPrice"
-                android:hint="@string/name_price"
                 android:inputType="number">
             </android.support.design.widget.TextInputEditText>
 

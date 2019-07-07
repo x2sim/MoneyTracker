@@ -87,6 +87,7 @@ public class BudgetFragment extends Fragment {
             call.enqueue(new Callback<Status>() {
                 @Override
                 public void onResponse(final Call<Status> call, final Response<Status> response) {
+                    Response<Status> r1 = response;
                     loadItems();
                 }
 
