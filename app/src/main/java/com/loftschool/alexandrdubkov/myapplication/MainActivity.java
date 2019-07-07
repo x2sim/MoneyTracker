@@ -1,17 +1,13 @@
 package com.loftschool.alexandrdubkov.myapplication;
 
-
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
