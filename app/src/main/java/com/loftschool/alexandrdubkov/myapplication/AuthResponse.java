@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 class AuthResponse {
     private String status;
     private String id;
-    @SerializedName("auth_token")
+    @SerializedName("auth-token")
     private String authToken;
 
     public String getStatus() {

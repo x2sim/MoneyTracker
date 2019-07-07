@@ -8,8 +8,11 @@
 
 <android.support.v7.widget.Toolbar
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
     app:title = "@string/budget_title"
+    app:titleTextColor="@color/colorWhite">
+
 </android.support.v7.widget.Toolbar>
 
 
