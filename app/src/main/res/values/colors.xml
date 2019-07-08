@@ -12,4 +12,6 @@
     <color name="colorWhite">#FFF</color>
     <color name="marigold">#ffc107</color>
     <color name="income_price_color">#7ed321</color>
+    <color name="colorAccentGrey">#dbdbdb</color>
+    <color name="add_button_text_color_disabled">#e3e3e3</color>
 </resources>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ public class BudgetFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String PRICE_COLOR = "price_color";
     public static final int REQUEST_CODE = 1001;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     private static final String TYPE = "type";
     private ItemsAdapter mItemsAdapter;
     private Api mApi;
@@ -60,18 +62,17 @@ public class BudgetFragment extends Fragment {
         // Inflate the layout for this fragment
         View fragmentView = inflater.inflate(R.layout.fragment_budget, container, false);
         RecyclerView recyclerView = fragmentView.findViewById(R.id.recycler_view);
-        mItemsAdapter = new ItemsAdapter(getArguments().getInt(PRICE_COLOR));
-
-        recyclerView.setAdapter(mItemsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        FloatingActionButton openAddScreenButton = fragmentView.findViewById(R.id.fab_add_screen);
-        openAddScreenButton.setOnClickListener(new View.OnClickListener() {
+        mSwipeRefreshLayout = fragmentView.findViewById(R.id.refresh);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(getContext(), AddItemActivity.class), REQUEST_CODE);
+            public void onRefresh() {
+                loadItems();
             }
         });
+
+        mItemsAdapter = new ItemsAdapter(getArguments().getInt(PRICE_COLOR));
+        recyclerView.setAdapter(mItemsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return fragmentView;
     }
 
@@ -104,6 +105,7 @@ public class BudgetFragment extends Fragment {
         itemsResponseCall.enqueue(new Callback<List<Item>>() {
             @Override
             public void onResponse(final Call<List<Item>> call, final Response<List<Item>> response) {
+                mSwipeRefreshLayout.setRefreshing(false);
              mItemsAdapter.clear();
              List<Item> itemsList =  response.body();
              for (Item item:itemsList) {
@@ -113,8 +115,9 @@ public class BudgetFragment extends Fragment {
 
             @Override
             public void onFailure(final Call<List<Item>> call, final Throwable t) {
-
+                mSwipeRefreshLayout.setRefreshing(false);
             }
+
         });
     }
 }

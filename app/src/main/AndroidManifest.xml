@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".AddItemActivity"
             android:theme="@style/AddActivityTheme"></activity>
-        <activity android:name=".BudgetActivity" android:label="@string/budget_title" android:theme="@style/AddActivityTheme"/>
+        <activity android:name=".BudgetActivity" android:label="@string/budget_title" android:theme="@style/BudgetActivityTheme"/>
     </application>
 
 </manifest>

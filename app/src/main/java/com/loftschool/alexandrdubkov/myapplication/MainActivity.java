@@ -31,15 +31,12 @@ public class MainActivity extends AppCompatActivity  {
      LoftApp loftApp = (LoftApp) getApplication();
      Api api = loftApp.getApi();
         String adroidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-
+       saveToken("$2y$10$tbbXWaoT1/jECNoMPXyguutpUxQyg06s0yIaUdiSeviEkssEu5VgK");
       Call<AuthResponse> authCall = api.auth(adroidId);
       authCall.enqueue(new Callback<AuthResponse>() {
           @Override
           public void onResponse(final Call<AuthResponse> call, final Response<AuthResponse> response) {
-              SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-              SharedPreferences.Editor editor = sharedPreferences.edit();
-              editor.putString("auth_token", response.body().getAuthToken());
-              editor.apply();
+              saveToken(response.body().getAuthToken());
           }
 
           @Override
@@ -47,5 +44,12 @@ public class MainActivity extends AppCompatActivity  {
 
           }
       });
+    }
+
+    private void saveToken(final String token) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("auth_token", token);
+        editor.apply();
     }
 }
