@@ -18,6 +18,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.loftschool.alexandrdubkov.myapplication.MainActivity.AUTH_TOKEN;
+
 public class BudgetFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,7 +83,7 @@ public class BudgetFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK )
         {
-            final String token = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("auth_token", "");
+            final String token = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(AUTH_TOKEN, "");
             final int price = Integer.parseInt(data.getStringExtra("price"));
             final String name = data.getStringExtra("name");
             Call<Status> call = mApi.addItems(new AddItemRequest(price, name, getArguments().getString(TYPE)), token);

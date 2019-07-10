@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3574fa</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#326EEE</color>
     <color name="colorAccent">#ffc107</color>
     <color name="colorBlue">#42aaff</color>
     <color name="colorButton">#7ed321</color>
@@ -14,4 +14,5 @@
     <color name="income_price_color">#7ed321</color>
     <color name="colorAccentGrey">#dbdbdb</color>
     <color name="add_button_text_color_disabled">#e3e3e3</color>
+    <color name="white">#fff</color>
 </resources>
