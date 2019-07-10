@@ -13,18 +13,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class MainActivity extends AppCompatActivity  {
-
+public class MainActivity extends AppCompatActivity {
     public static final String AUTH_TOKEN = "auth_token";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (!TextUtils.isEmpty(getToken())){
+        if (!TextUtils.isEmpty(getToken())) {
             startBudgetActivity();
-
         }
         Button enterButton = findViewById(R.id.enter_button);
         enterButton.setOnClickListener(new View.OnClickListener() {
@@ -33,22 +30,20 @@ public class MainActivity extends AppCompatActivity  {
                 startBudgetActivity();
             }
         });
-     LoftApp loftApp = (LoftApp) getApplication();
-     Api api = loftApp.getApi();
+        LoftApp loftApp = (LoftApp) getApplication();
+        Api api = loftApp.getApi();
         String adroidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-       saveToken("$2y$10$tbbXWaoT1/jECNoMPXyguutpUxQyg06s0yIaUdiSeviEkssEu5VgK");
-      Call<AuthResponse> authCall = api.auth(adroidId);
-      authCall.enqueue(new Callback<AuthResponse>() {
-          @Override
-          public void onResponse(final Call<AuthResponse> call, final Response<AuthResponse> response) {
-              saveToken(response.body().getAuthToken());
-          }
+        Call<AuthResponse> authCall = api.auth(adroidId);
+        authCall.enqueue(new Callback<AuthResponse>() {
+            @Override
+            public void onResponse(final Call<AuthResponse> call, final Response<AuthResponse> response) {
+                saveToken(response.body().getAuthToken());
+            }
 
-          @Override
-          public void onFailure(final Call<AuthResponse> call, final Throwable t) {
-
-          }
-      });
+            @Override
+            public void onFailure(final Call<AuthResponse> call, final Throwable t) {
+            }
+        });
     }
 
     private void startBudgetActivity() {
@@ -63,7 +58,8 @@ public class MainActivity extends AppCompatActivity  {
         editor.putString(AUTH_TOKEN, token);
         editor.apply();
     }
-    private String getToken(){
+
+    private String getToken() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         return sharedPreferences.getString(AUTH_TOKEN, "");
     }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,12 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static com.loftschool.alexandrdubkov.myapplication.MainActivity.AUTH_TOKEN;
 
 public class BudgetFragment extends Fragment {
@@ -40,7 +37,6 @@ public class BudgetFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt(PRICE_COLOR, fragmentType.getPriceColor());
         args.putString(TYPE, fragmentType.name());
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,7 +67,6 @@ public class BudgetFragment extends Fragment {
                 loadItems();
             }
         });
-
         mItemsAdapter = new ItemsAdapter(getArguments().getInt(PRICE_COLOR));
         recyclerView.setAdapter(mItemsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -12,9 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-
 import static com.loftschool.alexandrdubkov.myapplication.BudgetFragment.REQUEST_CODE;
-
 
 public class BudgetActivity extends AppCompatActivity {
 
@@ -52,7 +50,6 @@ private BudgetViewPagerAdapter mViewPagerAdapter;
         });
     }
 static class BudgetViewPagerAdapter extends FragmentPagerAdapter {
-
 
     public BudgetViewPagerAdapter(FragmentManager fm) {
         super(fm);
