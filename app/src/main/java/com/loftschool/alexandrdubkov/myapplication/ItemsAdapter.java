@@ -26,9 +26,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder viewHolder, int i) {
-     final Item item = mItemList.get(i);
+    public void onBindViewHolder(@NonNull final ItemsAdapter.ItemViewHolder viewHolder, final int position) {
+     final Item item = mItemList.get(position);
      viewHolder.bindItem(item);
+     viewHolder.setListener(item, position);
     }
 
     @Override
@@ -56,6 +57,21 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
         public void bindItem(final Item item){
                 mNameView.setText(item.getName());
                 mPriceView.setText(mPriceView.getContext().getResources().getString(R.string.template_price, String.valueOf(item.getPrice())));
+        }
+        public void setListener(Item item, int position){
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        itemView.setSelected(!itemView.isSelected());
+                        return false;
+                    }
+                });
         }
     }
 }
