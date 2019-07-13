@@ -2,7 +2,6 @@ package com.loftschool.alexandrdubkov.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -41,8 +40,8 @@ public class AddItemActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-             title = s.toString();
-             changetextcolorbutton();
+                title = s.toString();
+                changetextcolorbutton();
             }
         });
         pricetxt.addTextChangedListener(new TextWatcher() {
@@ -58,25 +57,21 @@ public class AddItemActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-            price = s.toString();
-            changetextcolorbutton();
+                price = s.toString();
+                changetextcolorbutton();
             }
         });
         butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-               setResult(Activity.RESULT_OK, new Intent().putExtra("name",title).putExtra("price", price));
-               finish();
+                setResult(Activity.RESULT_OK, new Intent().putExtra("name", title).putExtra("price", price));
+                finish();
             }
         });
     }
+
     private void changetextcolorbutton() {
-        if (!TextUtils.isEmpty(title) && !TextUtils.isEmpty(price)){
-            butt.setTextColor(ContextCompat.getColor(this, R.color.colorButton));
-        }
-        else
-            {
-            butt.setTextColor(ContextCompat.getColor(this, R.color.add_button_color_inactive));
-            }
+        butt.setEnabled(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(price));
+
     }
 }

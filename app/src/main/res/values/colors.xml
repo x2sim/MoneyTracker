@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3574fa</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryDark">#326EEE</color>
+    <color name="colorAccent">#ffc107</color>
     <color name="colorBlue">#42aaff</color>
     <color name="colorButton">#7ed321</color>
     <color name="colorGold">#ffd700</color>
@@ -12,4 +12,9 @@
     <color name="colorWhite">#FFF</color>
     <color name="marigold">#ffc107</color>
     <color name="income_price_color">#7ed321</color>
+    <color name="colorAccentGrey">#dbdbdb</color>
+    <color name="add_button_text_color_disabled">#e3e3e3</color>
+    <color name="white">#fff</color>
+    <color name="dark_grey_blue">#333f59</color>
+    <color name="item_background_selected">#f2f2f2</color>
 </resources>
