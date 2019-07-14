@@ -17,4 +17,5 @@
     <color name="white">#fff</color>
     <color name="dark_grey_blue">#333f59</color>
     <color name="item_background_selected">#f2f2f2</color>
+    <color name="dark_gray_blue">#333f59</color>
 </resources>
