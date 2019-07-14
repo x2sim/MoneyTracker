@@ -54,4 +54,9 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
+    <style name="MainActivityTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccentGray</item>
+    </style>
 </resources>
