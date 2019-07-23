@@ -127,20 +127,21 @@ public class BudgetFragment extends Fragment implements ItemAdapterListener, Act
     }
 
     @Override
-    public void onItemClick(final Item item, int position) {
-        if (mItemsAdapter.isSelected(position)){
+    public void onItemClick(final Item item, final int position) {
+        if (mItemsAdapter.isSelected(position)) {
             mItemsAdapter.toogleItem(position);
             mItemsAdapter.notifyDataSetChanged();
+            setActionModeTitle();
         }
     }
     @Override
-    public void onItemLongClick(final Item item, int position) {
+    public void onItemLongClick(final Item item, final int position) {
        mItemsAdapter.toogleItem(position);
        mItemsAdapter.notifyDataSetChanged();
        if (mActionMode == null) {
-           ((AppCompatActivity) getActivity()).startActionMode(this);
+           getActivity().startActionMode(this);
        }
-
+        setActionModeTitle();
     }
 
     @Override
