@@ -13,5 +13,6 @@
     <string name="enter_button_title">Войти</string>
     <string name="remove_title">Удалить</string>
     <string name="remove_confirmation">Вы действительно хотите удалить выбраные элементы?</string>
+    <string name="selected">Выделено: %1$s</string>
 
 </resources>

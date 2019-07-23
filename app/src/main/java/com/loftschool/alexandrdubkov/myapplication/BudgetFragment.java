@@ -197,6 +197,14 @@ public class BudgetFragment extends Fragment implements ItemAdapterListener, Act
 
     }
 
+    private void setActionModeTitle() {
+        if (mActionMode != null) {
+            mActionMode.setTitle(getString(
+                    R.string.selected,
+                    String.valueOf(mItemsAdapter.getSelectedItemIds().size())));
+        }
+    }
+
     private void removeItem(final int selectedId) {
         final String token = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("auth_token", "");
         Call<Status>itemsRemoveCall = mApi.removeItem(selectedId, token);
