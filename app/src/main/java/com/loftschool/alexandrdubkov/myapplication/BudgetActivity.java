@@ -1,7 +1,9 @@
 package com.loftschool.alexandrdubkov.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import static com.loftschool.alexandrdubkov.myapplication.BudgetFragment.REQUEST_CODE;
 
-public class BudgetActivity extends AppCompatActivity {
+public class BudgetActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
 private Toolbar mToolbar;
 private TabLayout mTabLayout;
@@ -35,9 +37,11 @@ private FloatingActionButton mFloatingActionButton;
        mTabLayout = findViewById(R.id.tab_layout);
        mViewPager = findViewById(R.id.view_pager);
        mViewPager.setAdapter(mViewPagerAdapter);
+       mViewPager.addOnPageChangeListener(this);
        mTabLayout.setupWithViewPager(mViewPager);
        mTabLayout.getTabAt(0).setText(R.string.outcome);
         mTabLayout.getTabAt(1).setText(R.string.income);
+        mTabLayout.getTabAt(2).setText(R.string.balance);
         mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.marigold));
 
         mFloatingActionButton = findViewById(R.id.fab_add_screen);
@@ -52,6 +56,7 @@ private FloatingActionButton mFloatingActionButton;
                 }
             }
         });
+        mViewPager.setCurrentItem(getPage());
     }
 
     @Override
@@ -89,6 +94,36 @@ private FloatingActionButton mFloatingActionButton;
 
     }
 
+    @Override
+    public void onPageScrolled(final int i, final float v, final int i1) {
+
+    }
+
+    @Override
+    public void onPageSelected(final int i) {
+        if (i == 2) {
+            mFloatingActionButton.hide();
+        } else {
+            mFloatingActionButton.show();
+        }
+        savePage(i);
+    }
+        private void savePage(final int page) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("page", page);
+            editor.apply();
+        }
+
+    private int getPage(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return sharedPreferences.getInt("page", 0);
+    }
+    @Override
+    public void onPageScrollStateChanged(final int i) {
+
+    }
+
     static class BudgetViewPagerAdapter extends FragmentPagerAdapter {
 
     public BudgetViewPagerAdapter(FragmentManager fm) {
@@ -100,16 +135,18 @@ private FloatingActionButton mFloatingActionButton;
     public Fragment getItem(int i) {
         switch (i){
             case 0:
-                return BudgetFragment.newInstance(FragmentType.income);
-            case 1:
                 return BudgetFragment.newInstance(FragmentType.expense);
+            case 1:
+                return BudgetFragment.newInstance(FragmentType.income);
+            case 2:
+                return BalanceFragment.newInstance();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }
 }

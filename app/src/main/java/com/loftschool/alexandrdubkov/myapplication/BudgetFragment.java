@@ -105,25 +105,26 @@ public class BudgetFragment extends Fragment implements ItemAdapterListener, Act
         }
     }
     private void loadItems(){
-        final String token = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("auth_token", "");
+        final String token = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(AUTH_TOKEN, "");
         Call<List<Item>>itemsResponseCall = mApi.getItems(getArguments().getString(TYPE), token);
-        itemsResponseCall.enqueue(new Callback<List<Item>>() {
+        itemsResponseCall.enqueue(new Callback<List<Item>>(){
             @Override
-            public void onResponse(final Call<List<Item>> call, final Response<List<Item>> response) {
+            public void onResponse(final Call <List<Item>> call,final Response<List<Item>> response){
                 mSwipeRefreshLayout.setRefreshing(false);
-             mItemsAdapter.clear();
-             List<Item> itemsList =  response.body();
-             for (Item item:itemsList) {
-                 mItemsAdapter.addItem(item);
-             }
+                mItemsAdapter.clear();
+                List<Item> itemsList = response.body();
+                for (Item item:itemsList) {
+                    mItemsAdapter.addItem(item);
+                }
             }
-
             @Override
             public void onFailure(final Call<List<Item>> call, final Throwable t) {
                 mSwipeRefreshLayout.setRefreshing(false);
             }
 
-        });
+
+    });
+
     }
 
     @Override

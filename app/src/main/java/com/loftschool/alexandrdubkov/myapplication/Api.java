@@ -17,5 +17,7 @@ public interface Api {
     Call<Status> addItems(@Body AddItemRequest request, @Query("auth-token") String token);
     @POST("items/remove")
     Call<Status> removeItem(@Query("id") int id, @Query("auth-token") String token);
+    @GET("balance")
+    Call<BalanceResponse> getBalance (@Query("auth-token") String token);
 
 }
