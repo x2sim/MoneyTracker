@@ -46,7 +46,7 @@ public class DiagramView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
-    private void update(int income, int expence) {
+    protected void update(int income, int expence) {
         this.income = income;
         this.expence = expence;
         invalidate();

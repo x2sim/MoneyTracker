@@ -24,7 +24,7 @@ public class BalanceFragment extends Fragment {
     private TextView mIncomeMoney;
     private DiagramView mDiagramView;
     private Api mApi;
-    public static BalanceFragment newInstance(FragmentType fragmentType) {
+    public static BalanceFragment newInstance() {
         BalanceFragment fragment = new BalanceFragment();
         return fragment;
     }
