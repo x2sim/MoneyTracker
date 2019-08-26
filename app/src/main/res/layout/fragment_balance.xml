@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -12,7 +14,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:textSize="14sp"
         android:fontFamily="sans-serif-light"
         android:textStyle="normal"
@@ -32,11 +35,12 @@
         android:paddingEnd="16dp"
         tools:text="67000₽"
         />
+
     <View
         android:layout_marginTop="37dp"
         android:background="@color/divider_color"
         android:layout_width="match_parent"
-        android:layout_height="1dp"></View>
+        android:layout_height="1dp" />
     <LinearLayout
         android:weightSum="2"
         android:orientation="horizontal"
@@ -122,7 +126,9 @@
         android:layout_marginStart="88dp"
         android:layout_marginEnd="88dp"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        app:expenseColor="@color/dark_grey_blue"
+        app:incomeColor="@color/colorAccent"/>
 
 </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
